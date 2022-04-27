@@ -1,51 +1,36 @@
-package doc.resources;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
 
-public class Pokemon {
-	private int health = 120;  //intialize in the extension or usage 
-	private int damage;
-	private String name;
-	private String type; //make an int that is used in an array 
-	public Pokemon (int health1, int damage1, String name1, String type1) {
-		health = health1;
-		damage = damage1;
-		name = name1;
-		type = type1;
+public class testPokemon extends FlexiblePictureExplorer implements ImageObserver{
+	public testPokemon(Picture picture) {
+		super(picture);
+		displayImage(new Picture());
+	}
+	
+	public void mouseClickedAction(DigitalPicture pict, Pixel pix) {
 		
 	}
-	public int getHealth(){
-		return health;
+	
+	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
+			int arg4, int arg5) {
+		return false;
 	}
-	public int getDamage() {
-		return damage;
+	
+	public static void main(String[] args) {
+		testPokemon pokemon = new testPokemon(new Picture());
 	}
-	public String getName () {
-		return name;
+	
+	public void displayImage(Picture picture) {
+		picture = new Picture("PokrmonPics\\Fireball (1).png");
+		Picture picture1 = new Picture("PokrmonPics\\charmander.png").scale(.25, .25);
+		Picture picture2 = new Picture("PokrmonPics\\squirtle.png").scale(.25, .25);
+		Graphics2D graphics = picture.createGraphics();
+		graphics.drawImage(picture1.getBufferedImage(), 0, 0, this);
+		graphics.drawImage(picture2.getBufferedImage(), 20, 20, this);
+		setImage(picture);
 	}
-	public String getType() {
-		return type;
-	}
-	public int hit(int userHealth, int attackDamage) {
-		if (userHealth ==0 || (userHealth-attackDamage)<0) {
-			return 0;
-		} else {
-			return userHealth-attackDamage;
-		}
-		
-	}
-	public boolean superEffective(String type1, String type2) {
-		boolean effective = false;
-		if (type1.equals(type2)) {
-			return effective;
-		}
-		if (type1.equals("fire")&& type2.equals("grass")) {
-			effective = true;
-		}
-		if(type1.equals("water")&& type2.equals("fire")) {
-			effective = true;
-		}
-		if (type1.equals("grass")&& type2.equals("water")) {
-			effective = true;
-		}
-		return effective;
 }
-	}
