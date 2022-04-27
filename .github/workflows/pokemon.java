@@ -26,8 +26,8 @@ public class testPokemon extends FlexiblePictureExplorer implements ImageObserve
 	
 	public void displayImage(Picture picture) {
 		picture = new Picture("PokrmonPics\\Fireball (1).png");
-		Picture picture1 = new Picture("PokrmonPics\\charmander.png").scale(.25, .25);
-		Picture picture2 = new Picture("PokrmonPics\\squirtle.png").scale(.25, .25);
+		Picture picture1 = new Picture("PokrmonPics\\output-onlinepngtools.png");
+		Picture picture2 = new Picture("PokrmonPics\\output-onlinepngtools (1).png");
 		Graphics2D graphics = picture.createGraphics();
 		graphics.drawImage(picture1.getBufferedImage(), 0, 0, this);
 		graphics.drawImage(picture2.getBufferedImage(), 20, 20, this);
